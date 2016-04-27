@@ -1,0 +1,23 @@
+require(foreign)
+pib<-read.csv("C:\\Users\\SALA-C23\\Desktop\\PIB TRIMESTRAL A PRECIOS DE 2008.csv",header = T)
+pibts<-ts(pib[,2],start = 1998,frequency = 4)
+plot(pibts)
+Acf(pibts)
+Media<-meanf(pibts,4)
+ingenuo<-naive(pibts,4)
+iesta<-snaive(pibts,4)
+deriva<-rwf(pibts,4,drift = T)
+#########
+plot(Media)
+plot(ingenuo)
+plot(iesta)
+plot(deriva)
+evalmed<-accuracy(Media)
+evalinge<-accuracy(ingenuo)
+evaliesta<-accuracy(iesta)
+evalderiva<-accuracy(deriva)
+evalmed
+evalinge
+evaliesta
+evalderiva
+
